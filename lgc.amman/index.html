@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LGC — Language Generation Center | German Courses & ÖSD Exams in Amman</title>
+<meta name="description" content="German language courses for every level (A1–C1), official ÖSD certification, and German Embassy translations — in the heart of Amman, Jordan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%237c2d24'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='24' font-style='italic' fill='%23eda63a' text-anchor='middle'%3Elgc%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300..800&family=Noto+Kufi+Arabic:wght@400..800&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --maroon:#7c2d24; --maroon-deep:#4e1b15; --maroon-ink:#2a0f0b;
+  --cream:#f8f1e4; --sand:#efe3cd; --paper:#fbf7ec;
+  --gold:#eda63a; --gold-soft:#f5c05a;
+  --teal:#20647a; --rose:#bf5f47; --ink:#231110;
+  --line:#e6d8bc;
+  --f-disp:"Fraunces",Georgia,serif;
+  --f-body:"Outfit",system-ui,sans-serif;
+  --f-ar:"Noto Kufi Arabic","Outfit",sans-serif;
+  --sh-lg:0 24px 60px -18px rgba(42,15,11,.35);
+  --sh-md:0 14px 34px -14px rgba(42,15,11,.28);
+  --r-lg:26px; --r-md:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f-body); background:var(--cream); color:var(--ink);
+  overflow-x:hidden; -webkit-font-smoothing:antialiased; line-height:1.6;
+}
+::selection{background:var(--gold);color:var(--maroon-ink)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--sand)}
+::-webkit-scrollbar-thumb{background:var(--maroon);border-radius:8px;border:2px solid var(--sand)}
+img{max-width:100%;display:block}
+a{color:inherit}
+.ar{font-family:var(--f-ar)}
+.container{max-width:1180px;margin-inline:auto;padding-inline:24px}
+.skip{position:fixed;top:-60px;left:16px;background:var(--gold);color:var(--maroon-ink);padding:10px 18px;border-radius:10px;z-index:300;transition:.3s;font-weight:700}
+.skip:focus{top:16px}
+
+/* grain overlay */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:2000;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* progress bar */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-soft));z-index:300}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ HEADER ============ */
+header{
+  position:fixed;inset:0 0 auto;z-index:120;--nav-c:var(--cream);
+  padding:18px 0;transition:padding .35s,background .35s,box-shadow .35s;
+}
+header .container{display:flex;align-items:center;gap:28px}
+header.scrolled{
+  --nav-c:var(--ink);padding:10px 0;
+  background:rgba(248,241,228,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 10px 30px -18px rgba(42,15,11,.35);border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-badge{
+  width:46px;height:46px;border-radius:50%;background:var(--maroon);color:var(--gold);
+  display:grid;place-items:center;font-family:var(--f-disp);font-style:italic;font-weight:700;font-size:1.15rem;
+  border:2px solid var(--gold);box-shadow:0 0 0 3px rgba(237,166,58,.3), inset 0 0 12px rgba(0,0,0,.25);
+}
+.brand b{font-family:var(--f-disp);font-size:1.2rem;color:var(--nav-c);letter-spacing:.02em;display:block;line-height:1}
+.brand small{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--nav-c);opacity:.75}
+nav.main{display:flex;gap:26px;margin-left:auto}
+nav.main a{
+  text-decoration:none;font-weight:600;font-size:.92rem;color:var(--nav-c);position:relative;padding:4px 0;
+}
+nav.main a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:.3s;border-radius:2px}
+nav.main a:hover::after,nav.main a.active::after{width:100%}
+.nav-cta{margin-left:6px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;font-weight:700;
+  border:0;cursor:pointer;text-decoration:none;font-size:.95rem;font-family:var(--f-body);transition:.3s;white-space:nowrap;
+}
+.btn .arr{transition:transform .3s}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-gold{background:var(--gold);color:var(--maroon-ink);box-shadow:0 10px 24px -8px rgba(237,166,58,.55)}
+.btn-gold:hover{transform:translateY(-2px);background:var(--gold-soft)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(248,241,228,.45)}
+.btn-ghost:hover{border-color:var(--cream);background:rgba(248,241,228,.08)}
+.btn-maroon{background:var(--maroon);color:var(--cream);box-shadow:0 12px 26px -10px rgba(124,45,36,.6)}
+.btn-maroon:hover{transform:translateY(-2px);background:var(--maroon-deep)}
+.btn-sm{padding:10px 20px;font-size:.85rem}
+#burger{display:none;background:none;border:0;cursor:pointer;width:40px;height:40px;position:relative;margin-left:auto;z-index:130}
+#burger span{position:absolute;left:8px;right:8px;height:2.5px;background:var(--nav-c);border-radius:3px;transition:.35s}
+#burger span:nth-child(1){top:14px}#burger span:nth-child(2){top:24px}
+body.menu-open #burger span{background:var(--cream)}
+body.menu-open #burger span:nth-child(1){top:19px;transform:rotate(45deg)}
+body.menu-open #burger span:nth-child(2){top:19px;transform:rotate(-45deg)}
+.mmenu{
+  position:fixed;inset:0;background:var(--maroon-deep);z-index:110;display:flex;flex-direction:column;
+  justify-content:center;padding:32px;transform:translateY(-102%);transition:transform .5s cubic-bezier(.7,0,.2,1);
+}
+body.menu-open .mmenu{transform:none}
+body.menu-open{overflow:hidden}
+.mmenu a{
+  text-decoration:none;color:var(--cream);font-family:var(--f-disp);font-size:clamp(2rem,8vw,3rem);
+  padding:10px 0;border-bottom:1px solid rgba(248,241,228,.12);display:flex;align-items:baseline;gap:16px;
+}
+.mmenu a i{font-style:normal;font-size:.8rem;color:var(--gold);font-family:var(--f-body)}
+.mmenu a:hover{color:var(--gold);padding-left:10px}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;background:radial-gradient(1200px 700px at 78% -10%,#8f3a2e 0%,var(--maroon) 45%,var(--maroon-deep) 100%);
+  color:var(--cream);overflow:hidden;padding:172px 0 96px;
+}
+.hero-outline{
+  position:absolute;top:2%;left:-1%;font-family:var(--f-disp);font-weight:800;font-size:clamp(7rem,19vw,17rem);
+  line-height:1;color:transparent;-webkit-text-stroke:1px rgba(248,241,228,.09);letter-spacing:.02em;user-select:none;pointer-events:none;
+}
+.hero-ring{position:absolute;border-radius:50%;pointer-events:none}
+.ring-1{width:520px;height:520px;border:1.5px solid rgba(237,166,58,.35);top:-160px;right:-120px}
+.ring-2{width:280px;height:280px;border:1.5px dashed rgba(237,166,58,.3);bottom:8%;left:-90px}
+.blob{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(191,95,71,.5),transparent 65%);bottom:-120px;right:14%;filter:blur(6px);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold-soft);
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--gold);border-radius:2px}
+.hero h1{
+  font-family:var(--f-disp);font-weight:600;font-size:clamp(2.7rem,6vw,4.7rem);line-height:1.04;
+  margin:18px 0 20px;letter-spacing:-.01em;
+}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:700}
+.squig{position:relative;display:inline-block}
+.squig svg{position:absolute;left:0;bottom:-8px;width:100%;height:12px;overflow:visible}
+.squig path{stroke-dasharray:320;stroke-dashoffset:320;animation:draw 1s .8s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero .lead{font-size:1.1rem;max-width:520px;color:rgba(248,241,228,.85);font-weight:300}
+.hero .lead .ar{display:block;margin-top:6px;color:var(--gold-soft);font-size:1rem}
+.hero-cta{display:flex;gap:14px;margin:30px 0 26px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap}
+.hero-meta span{
+  font-size:.8rem;padding:8px 14px;border-radius:999px;border:1px solid rgba(248,241,228,.25);
+  color:rgba(248,241,228,.85);background:rgba(248,241,228,.05);
+}
+.hero-copy>*{animation:fadeUp .85s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy>*:nth-child(1){animation-delay:.05s}.hero-copy>*:nth-child(2){animation-delay:.15s}
+.hero-copy>*:nth-child(3){animation-delay:.25s}.hero-copy>*:nth-child(4){animation-delay:.35s}
+.hero-copy>*:nth-child(5){animation-delay:.45s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+/* hero art */
+.hero-art{position:relative;height:540px;animation:fadeUp 1s .4s cubic-bezier(.2,.7,.2,1) both}
+.mini-poster{
+  position:absolute;width:min(330px,86%);background:var(--maroon);border:1px solid rgba(237,166,58,.4);
+  border-radius:22px;padding:26px 26px 60px;color:var(--cream);box-shadow:var(--sh-lg);overflow:visible;
+}
+.mini-poster.back{background:var(--rose);border-color:rgba(248,241,228,.25);transform:rotate(6deg) translate(-26px,-16px);z-index:1}
+.mp-eyebrow{font-family:var(--f-disp);font-style:italic;color:var(--gold-soft);font-size:1rem}
+.mini-poster h4{font-family:var(--f-disp);font-size:1.7rem;line-height:1.05;margin:4px 0 8px;letter-spacing:.01em}
+.mp-date{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.mp-btn{
+  display:inline-block;margin-top:16px;background:var(--gold);color:var(--maroon-ink);font-weight:800;
+  font-size:.72rem;letter-spacing:.14em;padding:9px 16px;border-radius:999px;
+}
+.mp-circle{
+  position:absolute;bottom:-34px;right:-30px;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,var(--gold-soft),var(--gold));box-shadow:0 14px 30px -10px rgba(237,166,58,.6);
+}
+.mp-logo{
+  position:absolute;bottom:14px;left:24px;width:46px;height:46px;border-radius:50%;border:2px solid var(--gold);
+  display:grid;place-items:center;font-family:var(--f-disp);font-style:italic;color:var(--gold);font-weight:700;
+}
+.mp-star{position:absolute;top:-16px;right:22px;font-size:1.6rem;color:var(--gold)}
+.bubble{
+  position:absolute;background:var(--cream);color:var(--maroon-ink);padding:12px 20px;border-radius:20px 20px 20px 4px;
+  font-weight:700;box-shadow:var(--sh-md);animation:float 5.5s ease-in-out infinite alternate;z-index:4;
+}
+.bubble .ar{font-weight:600}
+.bub-1{top:-6px;left:-8px}
+.bub-2{bottom:70px;left:-30px;border-radius:20px 20px 4px 20px;animation-delay:1.2s}
+@keyframes float{from{transform:translateY(-7px)}to{transform:translateY(9px)}}
+.stamp{
+  position:absolute;top:46%;right:-6px;width:96px;height:96px;border:2px dashed var(--gold);border-radius:50%;
+  display:grid;place-items:center;text-align:center;color:var(--gold-soft);font-size:.62rem;font-weight:800;
+  letter-spacing:.14em;transform:rotate(-12deg);z-index:5;background:rgba(74,26,21,.5);backdrop-filter:blur(3px);
+}
+.rotor{position:absolute;top:-38px;right:34px;width:128px;height:128px;z-index:6;animation:spin 16s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rotor text{fill:var(--gold-soft);font-size:12.5px;font-weight:700;letter-spacing:.22em;font-family:var(--f-body)}
+.rotor .core{fill:var(--gold)}
+.chip-float{
+  position:absolute;bottom:-6px;right:24px;background:var(--teal);color:#fff;font-weight:700;font-size:.78rem;
+  padding:10px 16px;border-radius:999px;box-shadow:var(--sh-md);z-index:6;animation:float 6s 1.8s ease-in-out infinite alternate;
+}
+
+/* ============ TICKER ============ */
+.ticker{background:var(--gold);color:var(--maroon-ink);overflow:hidden;padding:15px 0;transform:rotate(-1.1deg) scale(1.03);position:relative;z-index:5;box-shadow:0 14px 34px -16px rgba(42,15,11,.4)}
+.ticker-track{display:flex;gap:0;width:max-content;animation:tick 30s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{font-family:var(--f-disp);font-weight:600;font-size:1.05rem;padding:0 14px;white-space:nowrap}
+.ticker-track .sep{color:var(--maroon);padding:0 4px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ============ SECTION SCAFFOLD ============ */
+section{position:relative}
+.sec-pad{padding:104px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:52px;flex-wrap:wrap}
+.sec-title{font-family:var(--f-disp);font-weight:600;font-size:clamp(2.1rem,4.4vw,3.3rem);line-height:1.06;letter-spacing:-.01em;max-width:640px}
+.sec-title em{font-style:italic;color:var(--maroon)}
+.dark .sec-title em{color:var(--gold)}
+.sec-link{font-weight:700;text-decoration:none;color:var(--maroon);display:inline-flex;gap:8px;align-items:center;border-bottom:2px solid var(--gold);padding-bottom:3px;transition:.3s}
+.sec-link:hover{gap:14px}
+.dark{background:radial-gradient(1000px 500px at 15% 0%,#8f3a2e,transparent 60%),var(--maroon-deep);color:var(--cream)}
+.dark .sec-link{color:var(--gold-soft)}
+.wm{position:absolute;font-family:var(--f-disp);font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(124,45,36,.1);font-size:clamp(4rem,11vw,9rem);line-height:1;pointer-events:none;user-select:none;white-space:nowrap}
+.dark .wm{-webkit-text-stroke:1px rgba(248,241,228,.07)}
+
+/* ============ STATS ============ */
+.stats{padding:70px 0 30px;background:var(--cream)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{
+  background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:30px 26px;position:relative;overflow:hidden;
+  transition:.35s;
+}
+.stat:hover{transform:translateY(-6px);box-shadow:var(--sh-md);border-color:var(--gold)}
+.stat b{font-family:var(--f-disp);font-size:clamp(2rem,3.4vw,2.8rem);color:var(--maroon);display:block;line-height:1}
+.stat b i{font-style:normal;color:var(--gold)}
+.stat span{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#8a6f52;display:block;margin-top:10px}
+.stat::after{content:"";position:absolute;top:-30px;right:-30px;width:80px;height:80px;border-radius:50%;background:rgba(237,166,58,.14)}
+
+/* ============ ABOUT ============ */
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:start}
+.about-copy p{margin-top:22px;color:#5c4636;font-size:1.05rem;max-width:460px}
+.about-copy .quote{
+  margin-top:34px;font-family:var(--f-disp);font-style:italic;font-size:1.35rem;color:var(--maroon);
+  border-left:3px solid var(--gold);padding-left:20px;line-height:1.4;
+}
+.about-copy .quote small{display:block;font-family:var(--f-body);font-style:normal;font-size:.85rem;color:#8a6f52;margin-top:8px;letter-spacing:.08em}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.badge{
+  font-size:.78rem;font-weight:700;padding:9px 16px;border-radius:999px;background:var(--maroon);color:var(--cream);
+  transform:rotate(-2deg);box-shadow:var(--sh-md);
+}
+.badge:nth-child(2){background:var(--gold);color:var(--maroon-ink);transform:rotate(1.5deg)}
+.badge:nth-child(3){background:var(--teal);transform:rotate(-1deg)}
+.badge:nth-child(4){background:var(--rose);transform:rotate(2deg)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.feat{
+  background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:28px;transition:.35s;position:relative;
+}
+.feat:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:var(--sh-md);border-color:var(--gold)}
+.feat .ic{
+  width:52px;height:52px;border-radius:16px;background:var(--maroon);color:var(--gold);display:grid;place-items:center;margin-bottom:18px;
+  transition:.35s;
+}
+.feat:hover .ic{transform:rotate(-8deg) scale(1.06);background:var(--gold);color:var(--maroon-ink)}
+.feat h3{font-family:var(--f-disp);font-size:1.15rem;margin-bottom:8px}
+.feat p{font-size:.92rem;color:#6b5340}
+.feat:nth-child(2) .ic{background:var(--gold);color:var(--maroon-ink)}
+.feat:nth-child(3) .ic{background:var(--teal);color:#fff}
+.feat:nth-child(4) .ic{background:var(--rose);color:#fff}
+
+/* ============ COURSES ============ */
+.courses{background:var(--paper);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.course{
+  --acc:var(--maroon);background:#fff;border:1.5px solid var(--line);border-radius:var(--r-lg);padding:30px;
+  position:relative;overflow:hidden;transition:.4s;display:flex;flex-direction:column;min-height:320px;
+}
+.course:hover{transform:translateY(-8px);box-shadow:var(--sh-lg);border-color:var(--acc)}
+.course .num{
+  position:absolute;top:6px;right:14px;font-family:var(--f-disp);font-weight:800;font-size:4.4rem;line-height:1;
+  color:transparent;-webkit-text-stroke:1.2px var(--line);transition:.4s;user-select:none;
+}
+.course:hover .num{-webkit-text-stroke:1.2px var(--acc)}
+.course .tag{
+  align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--acc);color:#fff;padding:7px 13px;border-radius:999px;
+}
+.course h3{font-family:var(--f-disp);font-size:1.45rem;margin:18px 0 10px;letter-spacing:-.01em}
+.course p{font-size:.93rem;color:#6b5340;flex:1}
+.course .meta{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 20px}
+.course .meta span{font-size:.74rem;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--cream);border:1px solid var(--line);color:#7c6047}
+.course .go{
+  display:inline-flex;align-items:center;gap:8px;font-weight:800;color:var(--acc);text-decoration:none;font-size:.92rem;
+}
+.course .go:hover{gap:14px}
+.course.c-gold{--acc:var(--gold)}.course.c-gold .tag{color:var(--maroon-ink)}
+.course.c-teal{--acc:var(--teal)}
+.course.c-rose{--acc:var(--rose)}
+.course.c-ink{--acc:var(--ink)}
+.course.c-outline{background:transparent;border-style:dashed}
+.onset-strip{
+  margin-top:26px;background:var(--maroon);border-radius:var(--r-lg);padding:30px 36px;color:var(--cream);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden;
+}
+.onset-strip::after{content:"✳";position:absolute;right:24px;top:-24px;font-size:6rem;color:rgba(237,166,58,.16)}
+.onset-strip h4{font-family:var(--f-disp);font-size:1.4rem}
+.onset-strip p{opacity:.85;font-size:.92rem;max-width:520px}
+
+/* ============ LEVELS ============ */
+.levels-wrap{margin-top:8px}
+.level-track{display:flex;gap:0;position:relative;margin-bottom:34px}
+.level-track .rail{position:absolute;top:30px;left:4%;right:4%;height:3px;background:rgba(248,241,228,.18);border-radius:3px}
+.level-track .fill{position:absolute;top:30px;left:4%;height:3px;background:var(--gold);border-radius:3px;transition:width .6s cubic-bezier(.2,.7,.2,1);z-index:1}
+.lvl-btn{
+  flex:1;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:14px 4px;color:rgba(248,241,228,.55);transition:.3s;position:relative;z-index:2;
+}
+.lvl-btn .dot{
+  width:60px;height:60px;border-radius:50%;border:2px solid rgba(248,241,228,.3);display:grid;place-items:center;
+  font-family:var(--f-disp);font-weight:700;font-size:1.15rem;background:var(--maroon-deep);transition:.35s;
+}
+.lvl-btn small{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.lvl-btn:hover{color:var(--cream)}
+.lvl-btn:hover .dot{border-color:var(--gold);transform:translateY(-4px)}
+.lvl-btn.active{color:var(--gold-soft)}
+.lvl-btn.active .dot{background:var(--gold);border-color:var(--gold);color:var(--maroon-ink);box-shadow:0 0 0 7px rgba(237,166,58,.18);transform:scale(1.06)}
+.level-panel{
+  background:var(--cream);color:var(--ink);border-radius:var(--r-lg);padding:44px 48px;display:grid;
+  grid-template-columns:auto 1fr;gap:36px;align-items:center;box-shadow:var(--sh-lg);position:relative;overflow:hidden;
+  transition:opacity .25s,transform .25s;
+}
+.level-panel.swap{opacity:0;transform:translateY(14px)}
+.level-panel::after{content:"";position:absolute;right:-60px;bottom:-60px;width:200px;height:200px;border-radius:50%;background:rgba(237,166,58,.15)}
+.lp-code{
+  width:110px;height:110px;border-radius:28px;background:var(--maroon);color:var(--gold);display:grid;place-items:center;
+  font-family:var(--f-disp);font-weight:800;font-size:2.6rem;box-shadow:inset 0 0 20px rgba(0,0,0,.3);transform:rotate(-4deg);
+}
+.lp-body h3{font-family:var(--f-disp);font-size:1.7rem;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.lp-body h3 span{font-size:1rem;font-style:italic;color:var(--gold);font-weight:600;background:var(--maroon-ink);color:var(--gold-soft);padding:4px 14px;border-radius:999px}
+.lp-body p{margin:12px 0 18px;color:#5c4636;max-width:560px}
+.lp-tags{display:flex;gap:9px;flex-wrap:wrap}
+.lp-tags span{font-size:.78rem;font-weight:700;padding:7px 14px;border-radius:999px;background:#fff;border:1.5px solid var(--line);color:var(--maroon)}
+.lp-tags span.hot{background:var(--gold);border-color:var(--gold);color:var(--maroon-ink)}
+
+/* ============ ÖSD ============ */
+.osd-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.osd-copy p{margin-top:20px;color:rgba(248,241,228,.8);font-weight:300;max-width:440px}
+.osd-list{margin-top:30px;display:grid;gap:16px}
+.osd-list li{list-style:none;display:flex;gap:16px;align-items:flex-start}
+.osd-list .tick{
+  flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--maroon-ink);
+  display:grid;place-items:center;margin-top:2px;
+}
+.osd-list b{display:block;font-size:1rem}
+.osd-list p{font-size:.88rem;margin-top:2px;max-width:none}
+.seal{
+  margin-top:36px;display:inline-flex;align-items:center;gap:14px;border:1.5px dashed rgba(237,166,58,.5);
+  padding:14px 22px;border-radius:18px;color:var(--gold-soft);font-size:.85rem;font-weight:600;
+}
+.cal-card{background:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);color:var(--ink)}
+.cal-head{background:var(--maroon);color:var(--cream);padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.cal-head h3{font-family:var(--f-disp);font-size:1.25rem}
+.cal-head span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);font-weight:700}
+.cal-card table{width:100%;border-collapse:collapse}
+.cal-card th{
+  text-align:left;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#9a7d5c;
+  padding:14px 22px;border-bottom:1.5px solid var(--line);
+}
+.cal-card td{padding:15px 22px;border-bottom:1px solid #f2e9d5;font-size:.92rem;vertical-align:middle}
+.cal-card tr:last-child td{border-bottom:0}
+.cal-card tbody tr{transition:.25s}
+.cal-card tbody tr:hover{background:#fdf8ec}
+.lvl-chip{font-weight:800;font-size:.76rem;background:var(--cream);border:1.5px solid var(--line);padding:5px 11px;border-radius:999px;color:var(--maroon);white-space:nowrap}
+.st{font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;white-space:nowrap}
+.st.open{background:rgba(32,100,122,.12);color:var(--teal)}
+.st.few{background:rgba(237,166,58,.18);color:#a06a10}
+.st.wait{background:rgba(191,95,71,.14);color:var(--rose)}
+.cal-foot{padding:16px 24px;background:var(--paper);font-size:.8rem;color:#8a6f52;display:flex;gap:8px;align-items:center}
+
+/* ============ WORDS ============ */
+.words{background:var(--sand);border-bottom:1.5px solid var(--line);overflow:hidden}
+.word-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;perspective:1200px}
+.wcard{height:160px;cursor:pointer;outline-offset:4px}
+.wcard-inner{position:relative;width:100%;height:100%;transition:transform .65s cubic-bezier(.3,.7,.3,1);transform-style:preserve-3d}
+.wcard:hover .wcard-inner,.wcard.flip .wcard-inner{transform:rotateY(180deg)}
+.wface{
+  position:absolute;inset:0;border-radius:var(--r-md);backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:16px;
+}
+.wfront{background:#fff;border:1.5px solid var(--line)}
+.wfront b{font-family:var(--f-disp);font-size:1.35rem;color:var(--maroon)}
+.wfront small{margin-top:8px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#a58a67}
+.wback{background:var(--maroon);color:var(--cream);transform:rotateY(180deg)}
+.wback .ar{font-family:var(--f-ar);font-size:1.35rem;font-weight:700;color:var(--gold-soft)}
+.wback small{margin-top:6px;font-size:.72rem;opacity:.75;font-style:italic}
+.words-hint{text-align:center;margin-top:26px;color:#8a6f52;font-size:.88rem}
+.words-hint b{color:var(--maroon)}
+
+/* ============ GALLERY ============ */
+.life{background:var(--cream)}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;grid-auto-flow:dense;gap:16px}
+.tile{
+  border-radius:22px;padding:24px;position:relative;overflow:hidden;display:flex;flex-direction:column;
+  justify-content:space-between;transition:.4s;text-decoration:none;
+}
+.tile:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:var(--sh-lg);z-index:2}
+.tile .t-big{font-family:var(--f-disp);font-weight:700;font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.12;letter-spacing:-.01em}
+.tile .t-sub{font-size:.85rem;opacity:.85;margin-top:8px}
+.tile .t-chip{align-self:flex-start;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.18)}
+.tile .t-ig{position:absolute;top:18px;right:18px;opacity:.6}
+.tile .deco{position:absolute;border-radius:50%;pointer-events:none}
+.tile.t-maroon{background:var(--maroon);color:var(--cream)}
+.tile.t-gold{background:var(--gold);color:var(--maroon-ink)}
+.tile.t-teal{background:var(--teal);color:#fff}
+.tile.t-rose{background:var(--rose);color:var(--cream)}
+.tile.t-cream{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.tile.t-ink{background:var(--maroon-ink);color:var(--cream)}
+.t-wide{grid-column:span 2}.t-tall{grid-row:span 2}
+
+/* ============ TESTIMONIALS ============ */
+.testi{background:var(--sand);border-top:1.5px solid var(--line)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tcard{background:#fff;border-radius:var(--r-lg);padding:34px 30px;border:1.5px solid var(--line);position:relative;transition:.35s}
+.tcard:hover{transform:translateY(-6px);box-shadow:var(--sh-md)}
+.tcard .q{font-family:var(--f-disp);font-size:4rem;line-height:.6;color:var(--gold);display:block;margin-bottom:20px}
+.tcard p{font-size:.98rem;color:#5c4636;font-style:italic}
+.tcard .who{margin-top:22px;display:flex;align-items:center;gap:14px}
+.tcard .ava{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;font-size:.9rem}
+.tcard b{display:block;font-size:.95rem}
+.tcard small{color:#8a6f52;font-size:.8rem}
+.stars{color:var(--gold);letter-spacing:3px;font-size:.85rem;margin-bottom:14px}
+
+/* ============ CTA ============ */
+.cta{background:var(--gold);color:var(--maroon-ink);overflow:hidden}
+.cta::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:2px solid rgba(124,45,36,.2);top:-180px;left:-120px}
+.cta::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;border:2px dashed rgba(124,45,36,.25);bottom:-140px;right:-80px}
+.cta-inner{text-align:center;position:relative;z-index:2}
+.cta h2{font-family:var(--f-disp);font-weight:700;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.01em}
+.cta h2 .ar{display:block;font-size:.5em;font-weight:600;margin-top:10px}
+.cta p{margin:20px auto 34px;max-width:520px;font-weight:500;color:#5c2a20}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta .note{margin-top:26px;font-size:.85rem;font-weight:700;letter-spacing:.06em;color:#7c3a2b}
+
+/* ============ CONTACT ============ */
+.contact{background:var(--paper);border-top:1.5px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start}
+.info-list{display:grid;gap:14px;margin-top:34px}
+.info{
+  display:flex;gap:18px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);
+  border-radius:var(--r-md);padding:20px 22px;transition:.3s;text-decoration:none;
+}
+.info:hover{border-color:var(--gold);transform:translateX(6px)}
+.info .ic{flex:none;width:46px;height:46px;border-radius:14px;background:var(--maroon);color:var(--gold);display:grid;place-items:center}
+.info b{display:block;font-size:.98rem}
+.info span{font-size:.85rem;color:#7c6047}
+.form-card{background:#fff;border:1.5px solid var(--line);border-radius:var(--r-lg);padding:38px;box-shadow:var(--sh-md)}
+.form-card h3{font-family:var(--f-disp);font-size:1.5rem;margin-bottom:6px}
+.form-card>p{font-size:.9rem;color:#7c6047;margin-bottom:24px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-card label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a6f52;display:block;margin:16px 0 7px}
+.form-card input,.form-card select,.form-card textarea{
+  width:100%;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--paper);
+  font-family:var(--f-body);font-size:.95rem;color:var(--ink);transition:.3s;resize:vertical;
+}
+.form-card input:focus,.form-card select:focus,.form-card textarea:focus{
+  outline:none;border-color:var(--maroon);box-shadow:0 0 0 4px rgba(237,166,58,.2);background:#fff;
+}
+.form-card button{margin-top:24px;width:100%;justify-content:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--maroon-ink);color:rgba(248,241,228,.75);padding:72px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px;padding-bottom:52px}
+.foot-brand p{font-size:.92rem;margin:18px 0;max-width:280px}
+.foot-brand .tag{font-family:var(--f-disp);font-style:italic;color:var(--gold);font-size:1.05rem}
+footer h5{color:var(--cream);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:20px}
+footer ul{list-style:none;display:grid;gap:12px}
+footer ul a{text-decoration:none;font-size:.92rem;transition:.3s}
+footer ul a:hover{color:var(--gold);padding-left:6px}
+.socials{display:flex;gap:12px;margin-top:6px}
+.socials a{
+  width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(248,241,228,.25);display:grid;place-items:center;
+  transition:.3s;color:var(--cream);
+}
+.socials a:hover{background:var(--gold);border-color:var(--gold);color:var(--maroon-ink);transform:translateY(-4px)}
+.foot-bottom{border-top:1px solid rgba(248,241,228,.12);padding:22px 0;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.8rem;color:rgba(248,241,228,.5)}
+.foot-bottom .ar{color:var(--gold)}
+
+/* ============ TOAST / TO-TOP ============ */
+#toast{
+  position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);background:var(--maroon-ink);color:var(--cream);
+  padding:15px 26px;border-radius:999px;font-weight:600;font-size:.92rem;box-shadow:var(--sh-lg);opacity:0;
+  pointer-events:none;transition:.4s;z-index:250;display:flex;gap:10px;align-items:center;max-width:90vw;text-align:center;
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast .dot-t{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none}
+#totop{
+  position:fixed;right:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--maroon-ink);
+  border:0;cursor:pointer;display:grid;place-items:center;box-shadow:var(--sh-md);opacity:0;transform:translateY(80px);
+  transition:.4s;z-index:100;
+}
+#totop.show{opacity:1;transform:none}
+#totop:hover{background:var(--gold-soft);transform:translateY(-4px)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1024px){
+  nav.main{display:none}
+  #burger{display:block}
+  .course-grid{grid-template-columns:1fr 1fr}
+  .word-grid{grid-template-columns:repeat(3,1fr)}
+  .ig-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .hero{padding:140px 0 80px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{height:460px;margin-top:20px;max-width:440px}
+  .about-grid,.osd-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .level-panel{grid-template-columns:1fr;padding:32px;gap:20px;text-align:left}
+  .lp-code{width:84px;height:84px;font-size:2rem}
+}
+@media(max-width:600px){
+  .sec-pad{padding:72px 0}
+  .course-grid,.word-grid,.testi-grid{grid-template-columns:1fr}
+  .ig-grid{grid-template-columns:1fr;grid-auto-rows:auto}
+  .tile{min-height:190px}
+  .t-wide,.t-tall{grid-column:auto;grid-row:auto}
+  .level-track .rail,.level-track .fill{display:none}
+  .lvl-btn .dot{width:46px;height:46px;font-size:.95rem}
+  .lvl-btn small{font-size:.6rem}
+  .hero-art{height:420px}
+  .mini-poster{padding:22px 22px 54px}
+  .rotor{width:96px;height:96px;top:-26px;right:8px}
+  .stamp{right:0;width:82px;height:82px}
+  .f-row{grid-template-columns:1fr}
+  .form-card{padding:26px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress"></div>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="container">
+    <a href="#top" class="brand" aria-label="LGC home">
+      <span class="logo-badge">lgc</span>
+      <span><b>LGC</b><small>Language Generation Center</small></span>
+    </a>
+    <nav class="main" aria-label="Primary">
+      <a href="#about" data-scroll>About</a>
+      <a href="#courses" data-scroll>Courses</a>
+      <a href="#levels" data-scroll>Levels</a>
+      <a href="#osd" data-scroll>ÖSD Exams</a>
+      <a href="#life" data-scroll>Life @ LGC</a>
+      <a href="#contact" data-scroll>Contact</a>
+      <a href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener" class="btn btn-gold btn-sm nav-cta">Register <span class="arr">→</span></a>
+    </nav>
+    <button id="burger" aria-label="Toggle menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="mmenu" id="mmenu">
+  <nav aria-label="Mobile">
+    <a href="#about" data-scroll><i>01</i> About</a>
+    <a href="#courses" data-scroll><i>02</i> Courses</a>
+    <a href="#levels" data-scroll><i>03</i> Levels</a>
+    <a href="#osd" data-scroll><i>04</i> ÖSD Exams</a>
+    <a href="#life" data-scroll><i>05</i> Life @ LGC</a>
+    <a href="#contact" data-scroll><i>06</i> Contact</a>
+  </nav>
+  <div style="margin-top:36px">
+    <a href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%;justify-content:center">Register Now <span class="arr">→</span></a>
+  </div>
+</div>
+
+<main id="main">
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-outline" aria-hidden="true">DEUTSCH</div>
+  <div class="hero-ring ring-1" data-depth="0.03"></div>
+  <div class="hero-ring ring-2" data-depth="0.05"></div>
+  <div class="blob" data-depth="0.02"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Language Generation Center · Amman, Jordan</span>
+      <h1>Say <em class="squig">Hallo
+        <svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q 22 2 42 7 T 80 7 T 118 5" fill="none" stroke="#eda63a" stroke-width="3.5" stroke-linecap="round" pathLength="320"/></svg>
+      </em> to your&nbsp;future.</h1>
+      <p class="lead">German courses for every level — A1 to C1 — official ÖSD certification, and sworn translations for the German Embassy. All of it, in the heart of Amman.
+        <span class="ar" dir="rtl">تعلّم الألمانية في قلب عمّان — من أول كلمة حتى الشهادة.</span>
+      </p>
+      <div class="hero-cta">
+        <a href="#courses" data-scroll class="btn btn-gold">Explore Courses <span class="arr">→</span></a>
+        <a href="#levels" data-scroll class="btn btn-ghost">See the Level Path</a>
+      </div>
+      <div class="hero-meta">
+        <span>✓ Official ÖSD exam center</span>
+        <span>✓ Embassy-approved translations</span>
+        <span>✓ New groups every month</span>
+      </div>
+    </div>
+
+    <div class="hero-art" id="heroArt">
+      <div class="mini-poster back" data-depth="0.02" aria-hidden="true">
+        <span class="mp-eyebrow">German</span>
+        <h4>SUPER INTENSIVE COURSES</h4>
+        <span class="mp-date">Limited seats</span>
+      </div>
+      <div class="mini-poster front" data-depth="0.04">
+        <span class="mp-star">✳</span>
+        <span class="mp-eyebrow">German</span>
+        <h4>LANGUAGE COURSES</h4>
+        <span class="mp-date">November 2026 · Amman</span><br>
+        <span class="mp-btn">REGISTER NOW</span>
+        <div class="mp-circle" data-depth="0.06"></div>
+        <div class="mp-logo">lgc</div>
+      </div>
+      <div class="bubble bub-1" data-depth="0.07">Hallo! 👋</div>
+      <div class="bubble bub-2 ar" data-depth="0.05" dir="rtl">مرحباً! أهلاً فيكم</div>
+      <div class="stamp" data-depth="0.03">ÖSD<br>A1–C1</div>
+      <svg class="rotor" viewBox="0 0 200 200" aria-hidden="true" data-depth="0.05">
+        <defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+        <text><textPath href="#circ">ÖSD ZERTIFIKAT ✦ SPRACHKURSE ✦ AMMAN ✦ JORDAN ✦</textPath></text>
+        <path class="core" d="M100 82l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/>
+      </svg>
+      <div class="chip-float" data-depth="0.06">B1 Prüfung bestanden! 🎉</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Willkommen</span><span class="sep">✦</span>
+    <span class="ar" dir="rtl">أهلاً وسهلاً</span><span class="sep">✦</span>
+    <span>Guten Tag</span><span class="sep">✦</span>
+    <span class="ar" dir="rtl">مرحباً</span><span class="sep">✦</span>
+    <span>Danke</span><span class="sep">✦</span>
+    <span class="ar" dir="rtl">شكراً</span><span class="sep">✦</span>
+    <span>Los geht's!</span><span class="sep">✦</span>
+    <span class="ar" dir="rtl">يلا نبدأ</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal"><b><span class="count" data-to="5900">0</span><i>+</i></b><span>Community members</span></div>
+      <div class="stat reveal" style="--d:.1s"><b><span class="count" data-to="742">0</span><i>+</i></b><span>Posts of the LGC family</span></div>
+      <div class="stat reveal" style="--d:.2s"><b><span class="count" data-to="6">0</span></b><span>CEFR levels — A1 to C1</span></div>
+      <div class="stat reveal" style="--d:.3s"><b><span class="count" data-to="3">0</span></b><span>Courses · Exams · Translations</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about sec-pad" id="about">
+  <div class="wm" style="top:14px;left:-10px" aria-hidden="true">SPRACHEN</div>
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <span class="eyebrow" style="color:var(--maroon)">Why LGC</span>
+      <h2 class="sec-title" style="margin-top:16px">More than a school —<br>a <em>Sprachheim</em> in Amman.</h2>
+      <p>At LGC, German isn't a subject — it's a shared adventure. Small groups, teachers who make grammar genuinely funny, and a community that celebrates every <i>Prüfung bestanden</i> like a family win.</p>
+      <p>From your first <i>Hallo</i> to your ÖSD certificate and your embassy paperwork, we walk the whole road with you.</p>
+      <div class="quote">„Eine neue Sprache ist ein neues Leben."
+        <small>— A new language is a new life. <span class="ar" dir="rtl">لغة جديدة تعني حياة جديدة.</span></small>
+      </div>
+      <div class="badges">
+        <span class="badge">A1 → C1</span>
+        <span class="badge">ÖSD ✔</span>
+        <span class="badge">onSET ✔</span>
+        <span class="badge">Made in Amman ❤</span>
+      </div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13L7 22l5-3 5 3-1.5-9"/></svg></div><h3>Official ÖSD Center</h3><p>Sit your Austrian Language Diploma exam — A1 through C1 — right here at our center, with prep modules built around the real format.</p></div>
+      <div class="feat reveal" style="--d:.1s"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg></div><h3>Embassy Translations</h3><p>Sworn translations trusted for German Embassy procedures — documents handled accurately, quickly, and confidentially.</p></div>
+      <div class="feat reveal" style="--d:.2s"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Small, Lively Groups</h3><p>You don't disappear in the back row here. Everyone speaks in every session — that's the whole point.</p></div>
+      <div class="feat reveal" style="--d:.3s"><div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div><h3>A Real Community</h3><p>Open days, teacher celebrations, internships, memes — 742 posts of proof that learning here feels like belonging.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COURSES ================= -->
+<section class="courses sec-pad" id="courses">
+  <div class="wm" style="top:30px;right:-10px" aria-hidden="true">KURSE</div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--maroon)">Our Courses</span>
+        <h2 class="sec-title" style="margin-top:14px">Pick your pace.<br>We'll bring the <em>Deutsch</em>.</h2>
+      </div>
+      <a class="sec-link" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">See schedules & prices <span>→</span></a>
+    </div>
+
+    <div class="course-grid">
+      <article class="course reveal">
+        <span class="num">01</span>
+        <span class="tag">A1 → C1</span>
+        <h3>Standard Language Courses</h3>
+        <p>Our classic monthly groups: steady, social, and structured. Six weeks per level with morning and evening options that fit real life.</p>
+        <div class="meta"><span>6 weeks / level</span><span>In-center</span><span>New group monthly</span></div>
+        <a class="go" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">Register <span>→</span></a>
+      </article>
+
+      <article class="course c-gold reveal" style="--d:.08s">
+        <span class="num">02</span>
+        <span class="tag">Fast Lane</span>
+        <h3>Super Intensive Courses</h3>
+        <p>Same curriculum, double speed — for visa deadlines, university offers, and the impatiently ambitious. Ask about the A1 morning special offer.</p>
+        <div class="meta"><span>2–3 weeks / level</span><span>Morning track</span><span>Special offers</span></div>
+        <a class="go" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">Register <span>→</span></a>
+      </article>
+
+      <article class="course c-teal reveal" style="--d:.16s">
+        <span class="num">03</span>
+        <span class="tag">Exam Prep</span>
+        <h3>ÖSD Vorbereitung Modules</h3>
+        <p>Laser-focused training for the exam itself — <i>Schreiben &amp; Sprechen</i> or <i>Lesen &amp; Hören</i>, at B1 and B2. Online options available.</p>
+        <div class="meta"><span>3–4 days</span><span>60–120 JOD</span><span>Online available</span></div>
+        <a class="go" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">Register <span>→</span></a>
+      </article>
+
+      <article class="course c-rose reveal">
+        <span class="num">04</span>
+        <span class="tag">B1 / B2</span>
+        <h3>German for Nurses</h3>
+        <p><i>Pflege und medizinische Berufe</i> — the vocabulary, patient dialogues, and interview preparation healthcare employers in Germany expect.</p>
+        <div class="meta"><span>Career track</span><span>Anerkennung-ready</span><span>Specialist trainer</span></div>
+        <a class="go" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">Register <span>→</span></a>
+      </article>
+
+      <article class="course c-ink reveal" style="--d:.08s">
+        <span class="num">05</span>
+        <span class="tag">1 : 1</span>
+        <h3>Private Lessons</h3>
+        <p>Your schedule, your goals, your pace — from survival German before a trip to C1 polish for the boardroom.</p>
+        <div class="meta"><span>Flexible timing</span><span>In-person or online</span><span>Bespoke plan</span></div>
+        <a class="go" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">Register <span>→</span></a>
+      </article>
+
+      <article class="course c-outline reveal" style="--d:.16s">
+        <span class="num">06</span>
+        <span class="tag">Free</span>
+        <h3>onSET Placement Test</h3>
+        <p>Not sure where to start? The onSET online test places you at exactly the right level in about 45 minutes — before you spend a single dinar.</p>
+        <div class="meta"><span>Online</span><span>~45 minutes</span><span>Instant result</span></div>
+        <a class="go" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">Take the test <span>→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEVELS ================= -->
+<section class="dark sec-pad" id="levels">
+  <div class="wm" style="bottom:20px;right:-6px" aria-hidden="true">NIVEAUS</div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">The Level Path</span>
+        <h2 class="sec-title" style="margin-top:14px">From <em>Erste Schritte</em> to <em>Meisterschaft</em>.</h2>
+      </div>
+      <a class="sec-link" href="#osd" data-scroll>Where exams fit in <span>→</span></a>
+    </div>
+
+    <div class="levels-wrap reveal">
+      <div class="level-track">
+        <div class="rail"></div><div class="fill" id="lvlFill"></div>
+        <button class="lvl-btn active" data-lvl="0"><span class="dot">A1</span><small>Beginner</small></button>
+        <button class="lvl-btn" data-lvl="1"><span class="dot">A2</span><small>Elementary</small></button>
+        <button class="lvl-btn" data-lvl="2"><span class="dot">B1</span><small>Independent</small></button>
+        <button class="lvl-btn" data-lvl="3"><span class="dot">B2</span><small>Fluent</small></button>
+        <button class="lvl-btn" data-lvl="4"><span class="dot">C1</span><small>Advanced</small></button>
+        <button class="lvl-btn" data-lvl="5"><span class="dot">C2</span><small>Near-native</small></button>
+      </div>
+      <div class="level-panel" id="lvlPanel" aria-live="polite">
+        <div class="lp-code" id="lpCode">A1</div>
+        <div class="lp-body">
+          <h3 id="lpTitle">First Steps <span id="lpGer">Erste Schritte</span></h3>
+          <p id="lpDesc">Your very first German: introductions, numbers, ordering a coffee without pointing at the menu.</p>
+          <div class="lp-tags" id="lpTags"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÖSD ================= -->
+<section class="sec-pad" id="osd" style="background:var(--paper)">
+  <div class="wm" style="top:40px;left:-14px" aria-hidden="true">PRÜFUNG</div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--maroon)">ÖSD · Österreichisches Sprachdiplom</span>
+        <h2 class="sec-title" style="margin-top:14px">Certified in Amman.<br>Recognized <em>worldwide</em>.</h2>
+      </div>
+    </div>
+    <div class="osd-grid">
+      <div class="osd-copy dark" style="background:none;padding:0;border-radius:0">
+        <p>The ÖSD is Austria's official German language diploma — accepted by universities, employers, and embassies across the German-speaking world. LGC is an authorized ÖSD examination center, which means you prepare and sit your exam under one roof.</p>
+        <ul class="osd-list">
+          <li><span class="tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>All levels, one place</b><p style="color:rgba(248,241,228,.7);font-size:.88rem">ÖSD A1, A2, B1, B2 and C1 exams scheduled year-round at LGC.</p></div></li>
+          <li><span class="tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Prep that mirrors the exam</b><p style="color:rgba(248,241,228,.7);font-size:.88rem">Modules for Schreiben &amp; Sprechen and Lesen &amp; Hören — timed tasks, real format, honest feedback.</p></div></li>
+          <li><span class="tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><b>Embassy translations included in the journey</b><p style="color:rgba(248,241,228,.7);font-size:.88rem">When your certificate needs sworn translation for the German Embassy, we handle it in-house.</p></div></li>
+        </ul>
+        <div class="seal">🇦🇹 &nbsp;Authorized ÖSD Prüfungszentrum — Amman, Jordan</div>
+      </div>
+
+      <div class="cal-card reveal">
+        <div class="cal-head">
+          <h3>ÖSD Exam Calendar</h3>
+          <span>2027 · At LGC</span>
+        </div>
+        <table>
+          <thead><tr><th>Level</th><th>Exam Dates</th><th>Register Before</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><span class="lvl-chip">A1 – B1</span></td><td>05 – 08 Mar 2027</td><td>07 Feb 2027</td><td><span class="st open">Open</span></td></tr>
+            <tr><td><span class="lvl-chip">A2 – B1</span></td><td>19 – 22 Mar 2027</td><td>28 Feb 2027</td><td><span class="st open">Open</span></td></tr>
+            <tr><td><span class="lvl-chip">B1 – B2</span></td><td>16 – 20 Apr 2027</td><td>21 Mar 2027</td><td><span class="st few">Few seats</span></td></tr>
+            <tr><td><span class="lvl-chip">B2 – C1</span></td><td>06 – 08 Apr 2027</td><td>15 Mar 2027</td><td><span class="st open">Open</span></td></tr>
+            <tr><td><span class="lvl-chip">A1 – C1</span></td><td>14 – 27 Jun 2027</td><td>16 May 2027</td><td><span class="st wait">Waitlist</span></td></tr>
+            <tr><td><span class="lvl-chip">B1 – B2</span></td><td>09 – 12 Jul 2027</td><td>20 Jun 2027</td><td><span class="st open">Open</span></td></tr>
+          </tbody>
+        </table>
+        <div class="cal-foot">📍 Queen Rania Al Abdullah St. 285 &nbsp;·&nbsp; Bring your passport &nbsp;·&nbsp; Seats are limited — register early.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORDS ================= -->
+<section class="words sec-pad" id="words">
+  <div class="wm" style="top:26px;right:-10px" aria-hidden="true">WÖRTER</div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--maroon)">Wörterzeit · وقت الكلمات</span>
+        <h2 class="sec-title" style="margin-top:14px">Your first German words, <em>right now</em>.</h2>
+      </div>
+    </div>
+    <div class="word-grid">
+      <div class="wcard reveal" tabindex="0" role="button" aria-label="Flip card: Hallo"><div class="wcard-inner"><div class="wface wfront"><b>Hallo</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">مرحباً</span><small>haˈloː</small></div></div></div>
+      <div class="wcard reveal" tabindex="0" style="--d:.06s" role="button" aria-label="Flip card: Guten Morgen"><div class="wcard-inner"><div class="wface wfront"><b>Guten Morgen</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">صباح الخير</span><small>ˈguːtn̩ ˈmɔʁɡn̩</small></div></div></div>
+      <div class="wcard reveal" tabindex="0" style="--d:.12s" role="button" aria-label="Flip card: Danke"><div class="wcard-inner"><div class="wface wfront"><b>Danke</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">شكراً</span><small>ˈdaŋkə</small></div></div></div>
+      <div class="wcard reveal" tabindex="0" style="--d:.18s" role="button" aria-label="Flip card: Bitte"><div class="wcard-inner"><div class="wface wfront"><b>Bitte</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">عفواً / من فضلك</span><small>ˈbɪtə</small></div></div></div>
+      <div class="wcard reveal" tabindex="0" role="button" aria-label="Flip card: Wie geht's"><div class="wcard-inner"><div class="wface wfront"><b>Wie geht's?</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">كيف حالك؟</span><small>viː ɡeːts</small></div></div></div>
+      <div class="wcard reveal" tabindex="0" style="--d:.06s" role="button" aria-label="Flip card: Tschüss"><div class="wcard-inner"><div class="wface wfront"><b>Tschüss</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">مع السلامة</span><small>tʃʏs</small></div></div></div>
+      <div class="wcard reveal" tabindex="0" style="--d:.12s" role="button" aria-label="Flip card: Lecker"><div class="wcard-inner"><div class="wface wfront"><b>Lecker!</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">لذيذ!</span><small>ˈlɛkɐ</small></div></div></div>
+      <div class="wcard reveal" tabindex="0" style="--d:.18s" role="button" aria-label="Flip card: Viel Erfolg"><div class="wcard-inner"><div class="wface wfront"><b>Viel Erfolg</b><small>tap to flip</small></div><div class="wface wback"><span class="ar" dir="rtl">بالتوفيق</span><small>fiːl ɛɐ̯ˈɡɔlf</small></div></div></div>
+    </div>
+    <p class="words-hint reveal">This is lesson one. Imagine what lesson <b>sixty</b> feels like. 😉</p>
+  </div>
+</section>
+
+<!-- ================= LIFE @ LGC ================= -->
+<section class="life sec-pad" id="life">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--maroon)">Life @ LGC · @lgc.amman</span>
+        <h2 class="sec-title" style="margin-top:14px">742 posts of one big <em>Sprachfamilie</em>.</h2>
+      </div>
+      <a class="sec-link" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">Follow on Instagram <span>→</span></a>
+    </div>
+
+    <div class="ig-grid">
+      <a class="tile t-maroon t-wide t-tall reveal" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip">Every semester</span>
+        <div><span class="t-big" style="font-size:clamp(2rem,4vw,3.2rem)">OPEN<br>DAY</span><span class="t-sub">Let the fun begin — German at LGC. <span class="ar" dir="rtl">استمتع وتعلّم معنا.</span></span></div>
+        <span class="deco" style="width:150px;height:150px;background:radial-gradient(circle at 30% 30%,rgba(237,166,58,.9),rgba(237,166,58,.4));top:-40px;right:-40px"></span>
+        <span class="deco" style="width:70px;height:70px;border:2px dashed rgba(248,241,228,.4);bottom:26px;right:60px"></span>
+      </a>
+      <a class="tile t-cream reveal" style="--d:.06s" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip" style="background:var(--sand)">Daily life</span>
+        <div><span class="t-big">Course Vibes ✏️</span><span class="t-sub ar" dir="rtl">جو الكورس ولا أرقى ✨</span></div>
+      </a>
+      <a class="tile t-gold reveal" style="--d:.12s" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip" style="background:rgba(124,45,36,.15)">Special offer</span>
+        <div><span class="t-big">SUPER INTENSIVE</span><span class="t-sub">200 hours. One goal. Zero excuses.</span></div>
+      </a>
+      <a class="tile t-teal reveal" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip">B1 · B2</span>
+        <div><span class="t-big">German for Nurses 🩺</span><span class="t-sub">Pflege &amp; medizinische Berufe</span></div>
+      </a>
+      <a class="tile t-rose reveal" style="--d:.06s" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip">From our memes</span>
+        <div><span class="t-big" style="font-style:italic">POV: the email is a little too scary to send alone 🫣</span></div>
+      </a>
+      <a class="tile t-cream reveal" style="--d:.12s" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip" style="background:var(--sand)">Celebration</span>
+        <div><span class="t-big">Happy Teacher's Day 🌸</span><span class="t-sub">To the educators who taught us gratitude.</span></div>
+      </a>
+      <a class="tile t-ink reveal" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip">A1 – C1</span>
+        <div><span class="t-big">ÖSD Exam Day 🍀</span><span class="t-sub">Viel Glück an alle!</span></div>
+      </a>
+      <a class="tile t-cream t-wide reveal" style="--d:.06s" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip" style="background:var(--sand)">Join the team</span>
+        <div><span class="t-big">Internship Program</span><span class="t-sub">Office Management · Social Media Content · ÖSD Exams — send your CV!</span></div>
+      </a>
+      <a class="tile t-maroon reveal" style="--d:.12s" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <span class="t-chip">House rules</span>
+        <div><span class="t-big">Rules &amp; Regulations 📏</span><span class="t-sub">Short, fair &amp; shared with a smile.</span></div>
+      </a>
+      <a class="tile t-gold reveal" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">
+        <div><span class="t-big">742 posts<br>&amp; counting…</span><span class="t-sub">@lgc.amman</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testi sec-pad">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--maroon)">Student Voices</span>
+        <h2 class="sec-title" style="margin-top:14px">They came for German.<br>They stayed for the <em>family</em>.</h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard reveal">
+        <span class="q">"</span>
+        <div class="stars">★★★★★</div>
+        <p>I passed my ÖSD B2 on the first try. The prep module was harder than the exam itself — on purpose. Best kind of surprise.</p>
+        <div class="who"><span class="ava" style="background:var(--maroon)">R</span><div><b>Rand A.</b><small>ÖSD B2 · University track</small></div></div>
+      </div>
+      <div class="tcard reveal" style="--d:.1s">
+        <span class="q">"</span>
+        <div class="stars">★★★★★</div>
+        <p>The nurses' course gave me exactly the vocabulary my interviews in Germany needed. My employer said my German was "beeindruckend".</p>
+        <div class="who"><span class="ava" style="background:var(--teal)">A</span><div><b>Ahmad K.</b><small>German for Nurses · B2</small></div></div>
+      </div>
+      <div class="tcard reveal" style="--d:.2s">
+        <span class="q">"</span>
+        <div class="stars">★★★★★</div>
+        <p>I walked in knowing zero German. One year later I'm arguing politely in B1 — and I've made friends for life. <span class="ar" dir="rtl">أحلى مركز بالأردن.</span></p>
+        <div class="who"><span class="ava" style="background:var(--rose)">L</span><div><b>Lina S.</b><small>A1 → B1 · Standard course</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta sec-pad">
+  <div class="container cta-inner reveal">
+    <span class="eyebrow" style="color:var(--maroon-ink);justify-content:center;display:inline-flex">Next groups · November 2026</span>
+    <h2 style="margin-top:14px">Bereit?<span class="ar" dir="rtl">جاهز تبدأ؟</span></h2>
+    <p>A seat in the next group is waiting — standard, intensive, or that A1 morning offer everyone's talking about.</p>
+    <div class="cta-btns">
+      <a class="btn btn-maroon" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener">Register via Linktree <span class="arr">→</span></a>
+      <a class="btn" style="background:transparent;border:2px solid var(--maroon-ink);color:var(--maroon-ink)" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener">DM @lgc.amman</a>
+    </div>
+    <p class="note">Standard · Super Intensive · ÖSD Prep · Private · Nurses · Online</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact sec-pad" id="contact">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--maroon)">Visit Us</span>
+      <h2 class="sec-title" style="margin-top:14px">Come say <em>Hallo</em> — the coffee's on us.</h2>
+      <div class="info-list">
+        <div class="info"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Queen Rania Al Abdullah St. 285</b><span>Amman 11192, Jordan</span></div></div>
+        <a class="info" href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span><div><b>@lgc.amman</b><span>Daily schedules, offers &amp; memes</span></div></a>
+        <a class="info" href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span><div><b>linktr.ee/lgc.amman</b><span>Registration, test booking &amp; more</span></div></a>
+        <div class="info"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><b>Sunday – Thursday</b><span>Morning &amp; evening sessions · Embassy translations by appointment</span></div></div>
+      </div>
+    </div>
+
+    <form class="form-card reveal" id="contactForm" novalidate>
+      <h3>Reserve your seat</h3>
+      <p>Leave your details and the LGC team will contact you with the next available group.</p>
+      <div class="f-row">
+        <div><label for="fname">Full name</label><input id="fname" type="text" placeholder="Your name" required></div>
+        <div><label for="fphone">Phone / WhatsApp</label><input id="fphone" type="tel" placeholder="+962 7…"></div>
+      </div>
+      <label for="fcourse">I'm interested in</label>
+      <select id="fcourse">
+        <option>Standard Course (A1–C1)</option>
+        <option>Super Intensive Course</option>
+        <option>ÖSD Preparation Module</option>
+        <option>German for Nurses</option>
+        <option>Private Lessons</option>
+        <option>onSET Placement Test</option>
+        <option>Embassy Translation</option>
+      </select>
+      <label for="fmsg">Message (optional)</label>
+      <textarea id="fmsg" rows="3" placeholder="Tell us your goal — visa, university, work…"></textarea>
+      <button type="submit" class="btn btn-gold">Send my request <span class="arr">→</span></button>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand" style="text-decoration:none">
+          <span class="logo-badge">lgc</span>
+          <span><b style="color:var(--cream)">LGC</b><small style="color:rgba(248,241,228,.6)">Language Generation Center</small></span>
+        </a>
+        <p>German language courses, official ÖSD certification, and sworn embassy translations — in the heart of Amman.</p>
+        <span class="tag">Eine Sprache öffnet jede Tür. لغة جديدة، عالم جديد.</span>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#about" data-scroll>About LGC</a></li>
+          <li><a href="#courses" data-scroll>Courses</a></li>
+          <li><a href="#levels" data-scroll>Level Path</a></li>
+          <li><a href="#osd" data-scroll>ÖSD Exams</a></li>
+          <li><a href="#life" data-scroll>Life @ LGC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Popular</h5>
+        <ul>
+          <li><a href="#courses" data-scroll>Super Intensive</a></li>
+          <li><a href="#courses" data-scroll>German for Nurses</a></li>
+          <li><a href="#courses" data-scroll>ÖSD Prep Modules</a></li>
+          <li><a href="#courses" data-scroll>Private Lessons</a></li>
+          <li><a href="#courses" data-scroll>onSET Placement</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Say Hallo</h5>
+        <ul>
+          <li>Queen Rania Al Abdullah St. 285, Amman</li>
+          <li>Sunday – Thursday</li>
+        </ul>
+        <div class="socials">
+          <a href="https://www.instagram.com/lgc.amman/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://linktr.ee/lgc.amman" target="_blank" rel="noopener" aria-label="Linktree"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7 5 7-5M5 16l7-5 7 5"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Language Generation Center — Amman, Jordan. All rights reserved.</span>
+      <span class="ar" dir="rtl">صُنع بحب في عمّان 🤍</span>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="status"><span class="dot-t"></span><span id="toastMsg"></span></div>
+<button id="totop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<script>
+/* ---------- data ---------- */
+const LEVELS=[
+ {code:'A1',en:'First Steps',de:'Erste Schritte',desc:'Your very first German: introductions, numbers, ordering a coffee without pointing at the menu. No prerequisites — just curiosity.',tags:['6 weeks','No prerequisites','ÖSD A1 exam','Morning & evening'],pct:4},
+ {code:'A2',en:'Everyday German',de:'Der Alltag',desc:'Shopping, directions, appointments and small talk — the German of daily life starts to feel natural.',tags:['6 weeks','After A1','ÖSD A2 exam'],pct:22},
+ {code:'B1',en:'Independent',de:'Selbstständig',desc:'The milestone level. Handle work situations, study requirements and visa interviews — most German visas ask for exactly this.',tags:['8 weeks','Visa-ready','ÖSD B1 exam','Hot 🔥'],pct:45},
+ {code:'B2',en:'Fluent',de:'Fließend',desc:'Debate, negotiate, follow native-speed media and write with structure. Universities and employers take you seriously here.',tags:['8 weeks','University-ready','ÖSD B2 exam'],pct:68},
+ {code:'C1',en:'Mastery',de:'Meisterschaft',desc:'Academic and professional excellence: nuanced argument, precise writing, effortless comprehension.',tags:['10 weeks','Career-level','ÖSD C1 exam'],pct:86},
+ {code:'C2',en:'Near-Native',de:'Muttersprachlich',desc:'The final polish — style, idiom and cultural nuance, delivered through tailored private coaching.',tags:['Flexible','Private coaching','Style & nuance'],pct:100}
+];
+
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- header / progress / totop ---------- */
+const header=$('#header'), progress=$('#progress'), totop=$('#totop');
+function onScroll(){
+  const y=scrollY;
+  header.classList.toggle('scrolled',y>40);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  progress.style.width=(h>0?y/h*100:0)+'%';
+  totop.classList.toggle('show',y>600);
+  $$('.hero-copy>*, .hero-art').forEach(()=>{}); // noop keep
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+totop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+/* ---------- mobile menu ---------- */
+const burger=$('#burger');
+burger.onclick=()=>document.body.classList.toggle('menu-open');
+ $$('#mmenu a').forEach(a=>a.onclick=()=>document.body.classList.remove('menu-open'));
+
+/* ---------- smooth scroll with offset ---------- */
+ $$('[data-scroll]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(!id||!id.startsWith('#'))return;
+    const t=$(id); if(!t)return;
+    e.preventDefault();
+    const top=t.getBoundingClientRect().top+scrollY-(innerWidth>860?86:70);
+    scrollTo({top,behavior:prefersReduced?'auto':'smooth'});
+  });
+});
+
+/* ---------- reveal on scroll ---------- */
+const ro=new IntersectionObserver(es=>{
+  es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target)}});
+},{threshold:.12,rootMargin:'0px 0px -40px'});
+ $$('.reveal').forEach(el=>{
+  el.style.transitionDelay=(el.style.getPropertyValue('--d')||'0s');
+  ro.observe(el);
+});
+
+/* ---------- counters ---------- */
+const co=new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(!en.isIntersecting)return;
+    const el=en.target, to=+el.dataset.to, t0=performance.now(), dur=1600;
+    (function tick(t){
+      const p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(to*e).toLocaleString('en-US');
+      if(p<1)requestAnimationFrame(tick);
+    })(t0);
+    co.unobserve(el);
+  });
+},{threshold:.5});
+ $$('.count').forEach(el=>co.observe(el));
+
+/* ---------- level journey ---------- */
+const panel=$('#lvlPanel');
+function setLevel(i){
+  const L=LEVELS[i];
+  $$('.lvl-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  $('#lvlFill').style.width=L.pct+'%';
+  panel.classList.add('swap');
+  setTimeout(()=>{
+    $('#lpCode').textContent=L.code;
+    $('#lpTitle').firstChild.textContent=L.en+' ';
+    $('#lpGer').textContent=L.de;
+    $('#lpDesc').textContent=L.desc;
+    $('#lpTags').innerHTML=L.tags.map((t,k)=>`<span class="${k===3?'hot':''}">${t}</span>`).join('');
+    panel.classList.remove('swap');
+  },220);
+}
+ $$('.lvl-btn').forEach(b=>b.onclick=()=>setLevel(+b.dataset.lvl));
+ $('#lvlFill').style.width=LEVELS[0].pct+'%';
+
+/* ---------- flip cards (touch + keyboard) ---------- */
+ $$('.wcard').forEach(c=>{
+  c.addEventListener('click',()=>c.classList.toggle('flip'));
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.classList.toggle('flip')}});
+});
+
+/* ---------- hero parallax ---------- */
+const art=$('#heroArt');
+if(!prefersReduced && matchMedia('(pointer:fine)').matches){
+  addEventListener('mousemove',e=>{
+    const x=e.clientX/innerWidth-.5, y=e.clientY/innerHeight-.5;
+    $$('#heroArt [data-depth]').forEach(el=>{
+      const d=parseFloat(el.dataset.depth);
+      el.style.translate=`${-x*d*260}px ${-y*d*260}px`;
+    });
+  },{passive:true});
+}
+
+/* ---------- toast + form ---------- */
+let toastT;
+function toast(msg){
+  $('#toastMsg').textContent=msg;
+  const t=$('#toast'); t.classList.add('show');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),3600);
+}
+ $('#contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=$('#fname').value.trim();
+  toast(`Danke${n?', '+n:''}! 💛 شكراً — سنتواصل معك قريباً.`);
+  e.target.reset();
+});
+
+/* ---------- ticker duplicate for seamless loop ---------- */
+const track=$('#tickerTrack');
+track.innerHTML+=track.innerHTML;
+
+/* ---------- active nav highlight ---------- */
+const secObs=new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(en.isIntersecting){
+      $$('nav.main a[data-scroll]').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+en.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -50%'});
+['about','courses','levels','osd','life','contact'].forEach(id=>{const s=$('#'+id);if(s)secObs.observe(s)});
+
+/* ---------- year ---------- */
+ $('#year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
